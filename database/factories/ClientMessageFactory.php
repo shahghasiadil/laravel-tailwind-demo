@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Client;
+use App\Models\Ticket;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,10 @@ class ClientMessageFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'client_id' => Client::all()->pluck('id')->random(),
+            'ticket_id' => Ticket::all()->pluck('id')->random(),
+            'subject' => fake()->sentence,
+            'description' => fake()->paragraph,
         ];
     }
 }
