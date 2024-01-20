@@ -45,4 +45,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function departmentShifts()
+    {
+        return $this->belongsTo(UserDepartmentShift::class);
+    }
+
+    public function createdDepartmentShifts()
+    {
+        return $this->hasMany(UserDepartmentShift::class, 'created_by');
+    }
+
+    public function updatedDepartmentShifts()
+    {
+        return $this->hasMany(UserDepartmentShift::class, 'updated_by');
+    }
 }
