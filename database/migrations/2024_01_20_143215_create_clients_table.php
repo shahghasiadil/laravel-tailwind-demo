@@ -25,9 +25,9 @@ return new class extends Migration
             $table->string('travel_agent_title');
             $table->string('email');
             $table->integer('residence_country_cellular_number');
-            $table->integer('whatsapp_number');
+            $table->string('whatsapp_number');
             $table->string('telegram_nickname');
-            $table->integer('saudi_cellular_number');
+            $table->string('saudi_cellular_number');
             $table->string('favorite_contact')->comment('one of the above');
             $table->timestamps();
         });

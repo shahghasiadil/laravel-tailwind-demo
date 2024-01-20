@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
     use HasFactory;
+
+    public function tickets()
+    {
+        return $this->belongsToMany(Ticket::class, 'client_tickets', 'ticket_id');
+    }
 }

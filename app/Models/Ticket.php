@@ -16,11 +16,15 @@ class Ticket extends Model
 
     public function createdBy()
     {
-        return $this->belongsTo(User::class, 'created_by');
+        return $this->belongsTo(Client::class, 'created_by');
     }
 
     public function closedBy()
     {
-        return $this->belongsTo(User::class, 'closed_by');
+        return $this->belongsTo(Client::class, 'closed_by');
+    }
+    public function clients()
+    {
+        return $this->belongsToMany(Client::class, 'client_tickets', 'client_id');
     }
 }
