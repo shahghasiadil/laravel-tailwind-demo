@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
              'password'=> Hash::make('123456'),
         ]);
         $this->call(UserSeeder::class);
+        $this->call(DepartmentSeeder::class);
     }
 }
