@@ -28,6 +28,11 @@ class Ticket extends Model
         return $this->belongsToMany(Client::class, 'client_tickets', 'client_id');
     }
 
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'ticket_categories', 'category_id');
+    }
+
     public function clientMessages()
     {
         return $this->hasMany(ClientMessage::class, 'ticket_id');

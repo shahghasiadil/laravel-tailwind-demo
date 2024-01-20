@@ -13,4 +13,10 @@ class Category extends Model
     {
         return $this->belongsToMany(Department::class, 'category_departments','department_id');
     }
+
+    public function tickets()
+    {
+        return $this->belongsToMany(Ticket::class, 'ticket_categories', 'ticket_id');
+    }
+
 }

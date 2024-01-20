@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\Client;
 use App\Models\Ticket;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -19,6 +20,10 @@ class TicketSeeder extends Seeder
         $tickets->each(function ($ticket) {
             $ticket->clients()->attach(
                 Client::all()->random(2),
+                ['ticket_id' => $ticket->id]
+            );
+            $ticket->categories()->attach(
+                Category::all()->random(2),
                 ['ticket_id' => $ticket->id]
             );
         });
