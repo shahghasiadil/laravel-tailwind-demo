@@ -60,4 +60,19 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserDepartmentShift::class, 'updated_by');
     }
+
+    public function canceledTickets()
+    {
+        return $this->hasMany(Ticket::class, 'canceled_by');
+    }
+
+    public function createdTickets()
+    {
+        return $this->hasMany(Ticket::class, 'created_by');
+    }
+
+    public function closedTickets()
+    {
+        return $this->hasMany(UserDepartmentShift::class, 'closed_by');
+    }
 }
