@@ -48,7 +48,7 @@ class User extends Authenticatable
 
     public function departmentShifts()
     {
-        return $this->belongsTo(UserDepartmentShift::class);
+        return $this->hasMany(UserDepartmentShift::class);
     }
 
     public function createdDepartmentShifts()
