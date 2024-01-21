@@ -56,6 +56,11 @@ class User extends Authenticatable
         return $this->hasMany(UserDepartmentShift::class, 'created_by');
     }
 
+    public function activeDepartmentShift()
+    {
+        return $this->hasOne(UserDepartmentShift::class, 'user_id')->whereNull('end_at');
+    }
+
     public function updatedDepartmentShifts()
     {
         return $this->hasMany(UserDepartmentShift::class, 'updated_by');
