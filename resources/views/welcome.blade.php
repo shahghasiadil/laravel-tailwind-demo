@@ -48,16 +48,77 @@
             background-color: #bd2130;
         }
 
+        .dropdown {
+            display: inline-block;
+            position: relative;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px;
+            margin-right: 15px;
+        }
+
+        .dropdown:hover {
+            background-color: #555;
+        }
+
+        .dropdown-options {
+            display: none;
+            position: absolute;
+            overflow: auto;
+            /* Updated property to ensure options stack one above the other */
+            white-space: nowrap;
+        }
+
+        .dropdown-options a {
+            display: block;
+            padding: 8px 12px; /* Adjust padding as needed */
+            color: #ffffff;
+            text-decoration: none;
+            background-color: #333; /* Background color for options */
+        }
+
+        .dropdown-options a:hover {
+            background-color: #555; /* Hover background color for options */
+        }
+
+        .dropdown:hover .dropdown-options {
+            display: block;
+        }
+
     </style>
 </head>
 <body>
 
 <nav>
     <div class="tabs-container">
-        <a href="#">Users</a>
-        <a href="#">Categories</a>
-        <a href="#">Departments</a>
-        <a href="#">Tickets</a>
+        <div class="dropdown">
+            <span>Users</span>
+            <div class="dropdown-options">
+                <a href="#">See all</a>
+                <a href="#">Add new</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <span>Categories</span>
+            <div class="dropdown-options">
+                <a href="#">See all</a>
+                <a href="#">Add new</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <span>Departments</span>
+            <div class="dropdown-options">
+                <a href="#">See all</a>
+                <a href="#">Add new</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <span>Tickets</span>
+            <div class="dropdown-options">
+                <a href="#">See all</a>
+                <a href="#">Add new</a>
+            </div>
+        </div>
     </div>
     <button class="logout-btn" onclick="location.href='#'">Logout</button>
 </nav>
