@@ -53,10 +53,9 @@
             position: relative;
             color: #ffffff;
             text-decoration: none;
+            padding: 10px;
             margin-right: 15px;
-            /* Add top padding to create space between trigger and options */
-            /* Adjust as needed */
-            padding: 10px 10px 8px;
+            padding-bottom: 5px; /* Adjust as needed */
         }
 
         .dropdown:hover {
@@ -66,7 +65,8 @@
         .dropdown-options {
             display: none;
             position: absolute;
-            top: 100%; /* Position options below the trigger element */
+            top: 100%;
+            left: 0; /* Align the left edge of the dropdown with the left edge of the trigger */
             overflow: auto;
             white-space: nowrap;
         }
@@ -86,6 +86,7 @@
         .dropdown:hover .dropdown-options {
             display: block;
         }
+
 
 
     </style>
