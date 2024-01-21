@@ -53,8 +53,10 @@
             position: relative;
             color: #ffffff;
             text-decoration: none;
-            padding: 10px;
             margin-right: 15px;
+            /* Add top padding to create space between trigger and options */
+            /* Adjust as needed */
+            padding: 10px 10px 8px;
         }
 
         .dropdown:hover {
@@ -64,26 +66,27 @@
         .dropdown-options {
             display: none;
             position: absolute;
+            top: 100%; /* Position options below the trigger element */
             overflow: auto;
-            /* Updated property to ensure options stack one above the other */
             white-space: nowrap;
         }
 
         .dropdown-options a {
             display: block;
-            padding: 8px 12px; /* Adjust padding as needed */
+            padding: 8px 12px;
             color: #ffffff;
             text-decoration: none;
-            background-color: #333; /* Background color for options */
+            background-color: #333;
         }
 
         .dropdown-options a:hover {
-            background-color: #555; /* Hover background color for options */
+            background-color: #555;
         }
 
         .dropdown:hover .dropdown-options {
             display: block;
         }
+
 
     </style>
 </head>
