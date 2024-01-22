@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\ProfileController;
 
@@ -33,9 +34,21 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::controller(ProfileController::class)->group(function () {
+        Route::get('/profile', 'edit')->name('profile.edit');
+        Route::patch('/profile', 'update')->name('profile.update');
+        Route::delete('/profile', 'delete')->name('profile.destroy');
+    });
+
+    Route::controller(UserController::class)->group(function() {
+       Route::get('/users', 'index')->name('users');
+       Route::get('/users/create', 'create')->name('users.create');
+       Route::post('/users', 'store')->name('users.store');
+       Route::patch('/users/{user}', 'edit')->name('users.edit');
+       Route::post('/users/{user}', 'destroy')->name('users.destroy');
+    });
+
 });
 
-require __DIR__.'/auth.php';
+
+require __DIR__ . '/auth.php';
