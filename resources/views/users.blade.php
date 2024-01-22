@@ -100,9 +100,12 @@
                 <a href="{{ route('users.edit', $user->id) }}" class="action-icon" title="Edit">
                     Edit
                 </a>
-                <a href="{{ route('users.destroy', $user->id) }}" class="action-icon    " title="Delete" onclick="return confirm('Are you sure you want to delete this user?')">
-                    Delete
-                </a>
+                <form action="{{ route('users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?')">
+                    @csrf
+                    @method('DELETE')
+
+                    <button type="submit" class="action-button" title="Delete">Delete</button>
+                </form>
 
             </div>
         </div>
