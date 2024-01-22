@@ -1,4 +1,3 @@
-<link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 <style>
     body {
         font-family: 'Arial', sans-serif;
@@ -88,7 +87,7 @@
         <div class="dropdown">
             <span>Users</span>
             <div class="dropdown-options">
-                <a href={{ route('users') }}>See all</a>
+                <a href={{ route('users.index') }}>See all</a>
                 <a href="#">Add new</a>
             </div>
         </div>

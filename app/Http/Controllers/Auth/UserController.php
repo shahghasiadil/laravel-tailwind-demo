@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUserRequest;
 use Illuminate\Http\Request;
 
 use Spatie\Permission\Models\Role;
@@ -17,4 +18,19 @@ class UserController extends Controller
            'users' => User::all(),
         ]);
     }
+
+    public function create()
+    {
+        return view('users-create');
+    }
+
+    public function store(StoreUserRequest $request)
+    {
+        $attributes = $request->validated();
+
+        User::create([
+            ...$attributes
+        ]);
+    }
+
 }

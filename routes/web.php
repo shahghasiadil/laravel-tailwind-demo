@@ -40,13 +40,9 @@ Route::middleware('auth')->group(function () {
         Route::delete('/profile', 'delete')->name('profile.destroy');
     });
 
-    Route::controller(UserController::class)->group(function() {
-       Route::get('/users', 'index')->name('users');
-       Route::get('/users/create', 'create')->name('users.create');
-       Route::post('/users', 'store')->name('users.store');
-       Route::patch('/users/{user}', 'edit')->name('users.edit');
-       Route::post('/users/{user}', 'destroy')->name('users.destroy');
-    });
+    Route::resource('users', UserController::class);
+
+
 
 });
 

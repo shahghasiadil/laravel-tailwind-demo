@@ -20,6 +20,14 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        text-align: center;
+    }
+
+    .users-header {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 15px;
     }
 
     .user-card {
@@ -53,14 +61,36 @@
     .action-icon:hover {
         text-decoration: underline;
     }
+
+    .create-user-btn {
+        margin-bottom: 15px;
+    }
+
+    .create-user-btn a {
+        text-decoration: none;
+        color: #fff;
+        padding: 10px 15px;
+        background-color: #28a745; /* Green color */
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .create-user-btn a:hover {
+        background-color: #218838; /* Darker green color on hover */
+    }
 </style>
 <body>
 
 @include('components.navbar')
 
 <div class="users-container">
-    <h1>Users</h1>
-
+    <div class="users-header">
+        <h1>Users</h1>
+        <span class="create-user-btn">
+            <a href="{{ route('users.create') }}">Create New User</a>
+        </span>
+    </div>
     @foreach($users as $user)
         <div class="user-card">
             <div class="user-info">
@@ -68,11 +98,9 @@
             </div>
             <div class="user-actions">
                 <a href="{{ route('users.edit', $user->id) }}" class="action-icon" title="Edit">
-                    <!-- Add your edit icon here, e.g., Font Awesome or custom icon -->
                     Edit
                 </a>
                 <a href="{{ route('users.destroy', $user->id) }}" class="action-icon    " title="Delete" onclick="return confirm('Are you sure you want to delete this user?')">
-                    <!-- Add your delete icon here, e.g., Font Awesome or custom icon -->
                     Delete
                 </a>
 
