@@ -16,14 +16,14 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('users', [
+        return view('users.index', [
            'users' => User::all(),
         ]);
     }
 
     public function create()
     {
-        return view('users-create');
+        return view('users.create');
     }
 
     public function store(StoreUserRequest $request)
@@ -37,7 +37,7 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('users-edit', [
+        return view('users.edit', [
             'user' => $user,
         ]);
     }

@@ -88,7 +88,7 @@
             <span>Users</span>
             <div class="dropdown-options">
                 <a href={{ route('users.index') }}>See all</a>
-                <a href="#">Add new</a>
+                <a href="{{ route('users.create') }}">Add new</a>
             </div>
         </div>
         <div class="dropdown">
