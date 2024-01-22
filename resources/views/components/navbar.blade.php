@@ -94,8 +94,8 @@
         <div class="dropdown">
             <span>Categories</span>
             <div class="dropdown-options">
-                <a href="#">See all</a>
-                <a href="#">Add new</a>
+                <a href="{{ route('categories.index') }}">See all</a>
+                <a href="{{ route('categories.create') }}">Add new</a>
             </div>
         </div>
         <div class="dropdown">

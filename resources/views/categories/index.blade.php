@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users</title>
+    <title>Categories</title>
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    <!-- Additional head content -->
 </head>
 <style>
-    .users-container {
+    .categories-container {
         max-width: 800px;
         margin: 20px auto;
         padding: 20px;
@@ -21,33 +23,33 @@
         text-align: center;
     }
 
-    .users-header {
+    .categories-header {
         display: flex;
         justify-content: space-between;
         width: 100%;
         margin-bottom: 15px;
     }
 
-    .user-card {
+    .category-card {
         width: 100%;
         margin-bottom: 15px;
         padding: 15px;
-        background-color: #fff; /* White background color for each user card */
+        background-color: #fff; /* White background color for each category card */
         border-radius: 5px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Slight box shadow for separation */
 
-        /* Flex to arrange user information and actions horizontally */
+        /* Flex to arrange category information and actions horizontally */
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
-    .user-info {
-        /* Style for user information */
+    .category-info {
+        /* Style for category information */
     }
 
-    .user-actions {
-        /* Style for user actions (edit and delete) */
+    .category-actions {
+        /* Style for category actions (edit and delete) */
     }
 
     .action-icon {
@@ -60,11 +62,11 @@
         text-decoration: underline;
     }
 
-    .create-user-btn {
+    .create-category-btn {
         margin-bottom: 15px;
     }
 
-    .create-user-btn a {
+    .create-category-btn a {
         text-decoration: none;
         color: #fff;
         padding: 10px 15px;
@@ -74,15 +76,15 @@
         transition: background-color 0.3s ease;
     }
 
-    .create-user-btn a:hover {
+    .create-category-btn a:hover {
         background-color: #218838; /* Darker green color on hover */
     }
 
-    .delete-user-btn {
+    .delete-category-btn {
         margin-left: 10px;
     }
 
-    .delete-user-btn button {
+    .delete-category-btn button {
         padding: 8px 12px;
         background-color: #dc3545; /* Red color */
         color: #fff;
@@ -93,7 +95,7 @@
         transition: background-color 0.3s ease;
     }
 
-    .delete-user-btn button:hover {
+    .delete-category-btn button:hover {
         background-color: #c82333; /* Darker red color on hover */
     }
 </style>
@@ -101,24 +103,25 @@
 
 @include('components.navbar')
 
-<div class="users-container">
-    <div class="users-header">
-        <h1>Users</h1>
-        <span class="create-user-btn">
-            <a href="{{ route('users.create') }}">Create New User</a>
+<div class="categories-container">
+    <div class="categories-header">
+        <h1>Categories</h1>
+        <span class="create-category-btn">
+            <a href="{{ route('categories.create') }}">Create New Category</a>
         </span>
     </div>
-    @foreach($users as $user)
-        <div class="user-card">
-            <div class="user-info">
-                <span>Name: {{ $user->name }}</span>
+    @foreach($categories as $category)
+        <div class="category-card">
+            <div class="category-info">
+                <span>Title: {{ $category->title }}</span>
+                <!-- Add other category information as needed -->
             </div>
-            <div class="user-actions">
-                <a href="{{ route('users.edit', $user->id) }}" class="action-icon" title="Edit">
+            <div class="category-actions">
+                <a href="{{ route('categories.edit', $category->id) }}" class="action-icon" title="Edit">
                     Edit
                 </a>
-                <span class="delete-user-btn">
-                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?')">
+                <span class="delete-category-btn">
+                    <form action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this category?')">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="action-button" title="Delete">Delete</button>
