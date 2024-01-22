@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Http\Request;
 
 use Illuminate\Session\Store;
@@ -33,5 +34,23 @@ class UserController extends Controller
 
         return redirect()->route('users.index')->with('success', 'User created successfully');
     }
+
+    public function edit(User $user)
+    {
+        return view('users-edit', [
+            'user' => $user,
+        ]);
+    }
+
+    public function update(UpdateUserRequest $request, User $user)
+    {
+        $attributes = $request->validated();
+
+        $user->update($attributes);
+
+
+        return redirect()->route('users.index')->with('success', 'User edited successfully');
+    }
+
 
 }
