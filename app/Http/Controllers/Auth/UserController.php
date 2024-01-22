@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
 use Illuminate\Http\Request;
 
+use Illuminate\Session\Store;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Models\User;
@@ -28,9 +29,9 @@ class UserController extends Controller
     {
         $attributes = $request->validated();
 
-        User::create([
-            ...$attributes
-        ]);
+        $user = User::create($attributes);
+
+        return redirect()->route('users.index')->with('success', 'User created successfully');
     }
 
 }
