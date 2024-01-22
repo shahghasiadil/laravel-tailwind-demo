@@ -79,6 +79,25 @@
     .create-user-btn a:hover {
         background-color: #218838; /* Darker green color on hover */
     }
+
+    .delete-user-btn {
+        margin-left: 10px;
+    }
+
+    .delete-user-btn button {
+        padding: 8px 12px;
+        background-color: #dc3545; /* Red color */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .delete-user-btn button:hover {
+        background-color: #c82333; /* Darker red color on hover */
+    }
 </style>
 <body>
 
@@ -100,13 +119,13 @@
                 <a href="{{ route('users.edit', $user->id) }}" class="action-icon" title="Edit">
                     Edit
                 </a>
-                <form action="{{ route('users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?')">
-                    @csrf
-                    @method('DELETE')
-
-                    <button type="submit" class="action-button" title="Delete">Delete</button>
-                </form>
-
+                <span class="delete-user-btn">
+                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="action-button" title="Delete">Delete</button>
+                    </form>
+                </span>
             </div>
         </div>
     @endforeach
