@@ -11,6 +11,7 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "mauricius/laravel-htmx": "^0.5.0",
+        "mkocansey/bladewind": "^2.4",
         "spatie/laravel-permission": "^6.3"
     },
     "require-dev": {
