@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('category_departments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id');
-            $table->foreignId('department_id');
+            $table->foreignId('department_id')->onDelete('cascade');;
             $table->timestamps();
         });
     }

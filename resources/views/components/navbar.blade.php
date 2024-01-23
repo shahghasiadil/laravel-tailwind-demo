@@ -101,7 +101,7 @@
         <div class="dropdown">
             <span>Departments</span>
             <div class="dropdown-options">
-                <a href="#">See all</a>
+                <a href="{{ route('departments.index') }}">See all</a>
                 <a href="#">Add new</a>
             </div>
         </div>

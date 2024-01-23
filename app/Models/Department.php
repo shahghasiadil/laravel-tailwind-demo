@@ -9,6 +9,8 @@ class Department extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function departmentShifts()
     {
         return $this->hasMany(UserDepartmentShift::class);
