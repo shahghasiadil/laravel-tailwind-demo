@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('client_tickets', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('client_id');
-            $table->foreignId('ticket_id');
-            $table->timestamps();
+            $table->foreignId('client_id')->references('id')->on('clients')->onDelete('cascade');;
+            $table->foreignId('ticket_id')->references('id')->on('tickets')->onDelete('cascade');;
         });
     }
 

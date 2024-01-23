@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('ticket_categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ticket_id');
-            $table->foreignId('category_id');
+            $table->foreignId('category_id')->constrained('categories');
+            $table->foreignId('ticket_id')->constrained('tickets');
             $table->timestamps();
         });
     }

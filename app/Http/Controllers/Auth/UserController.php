@@ -20,7 +20,7 @@ class UserController extends Controller
         $action_icons = [
             "icon:eye | color:primary | click:redirect('/users/{id}')",
         ];
-        return view('users.1index', [
+        return view('users.index', [
             'action_icons'=>$action_icons,
             'captions'=>['name'=>__('Name'), 'email'=>__('Email'), 'dob'=>'Birth date', 'locale'=>__('Language')],
             'users' => User::query()->paginate(5),

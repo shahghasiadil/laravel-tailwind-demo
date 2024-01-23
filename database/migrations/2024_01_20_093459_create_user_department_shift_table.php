@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('user_department_shift', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('department_id')->references('id')->on('departments')->onDelete('cascade');
             $table->timestamp('start_at')->comment('start work in department at');
             $table->timestamp('end_at')->comment('end work or moved from department at');

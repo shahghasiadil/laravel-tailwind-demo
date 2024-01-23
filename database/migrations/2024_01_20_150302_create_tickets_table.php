@@ -22,10 +22,10 @@ return new class extends Migration
             $table->integer('reported_model_id')->nullable()->comment('this column will be ignored if not client or service_center');
             $table->json('model_data')->nullable()->comment('collection of model row');
             $table->foreignId('created_by')->references('id')->on('users');
-            $table->foreignId('closed_by')->references('id')->on('users');
-            $table->timestamp('closed_at');
-            $table->foreignId('canceled_by')->references('id')->on('users');
-            $table->timestamp('canceled_at');
+            $table->foreignId('closed_by')->nullable()->references('id')->on('users');
+            $table->timestamp('closed_at')->nullable();
+            $table->foreignId('canceled_by')->nullable()->references('id')->on('users');
+            $table->timestamp('canceled_at')->nullable();
             $table->timestamps();
         });
     }

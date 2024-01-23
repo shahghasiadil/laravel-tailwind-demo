@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('category_departments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id');
-            $table->foreignId('department_id')->onDelete('cascade');;
+            $table->foreignId('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreignId('department_id')->references('id')->on('departments')->onDelete('cascade');
             $table->timestamps();
         });
     }

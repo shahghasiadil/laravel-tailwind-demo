@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('client_messages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('client_id')->references('id')->on('clients');
-            $table->foreignId('ticket_id')->references('id')->on('tickets');
+            $table->foreignId('client_id')->references('id')->on('clients')->onDelete('cascade');
+            $table->foreignId('ticket_id')->references('id')->on('tickets')->onDelete('cascade');
             $table->string('subject');
             $table->text('description');
             $table->timestamps();

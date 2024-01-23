@@ -9,6 +9,9 @@ class Ticket extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
+
     public function canceledBy()
     {
         return $this->belongsTo(User::class, 'canceled_by');

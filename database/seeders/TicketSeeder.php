@@ -22,10 +22,11 @@ class TicketSeeder extends Seeder
                 Client::all()->random(2),
                 ['ticket_id' => $ticket->id]
             );
-            $ticket->categories()->attach(
-                Category::all()->random(2),
-                ['ticket_id' => $ticket->id]
-            );
+//            $ticket->categories()->create([
+//                'category_id' => Category::all()->pluck('id')->random(),
+//                'ticket_id' => $ticket->id
+//                ]
+//            );
         });
     }
 }
