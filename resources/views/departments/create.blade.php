@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create New Department</title>
+    <title>{{ __('messages.create_new_department') }}</title>
 
 </head>
 <style>
@@ -58,47 +58,47 @@
 @include('components.navbar')
 
 <div class="create-department-container">
-    <h1>Create New Department</h1>
+    <h1>{{ __('messages.create_new_department') }}</h1>
 
     <form action="{{ route('departments.store') }}" method="POST">
         @csrf
 
         <div class="form-group">
-            <label for="title">Title:</label>
+            <label for="title">{{ __('messages.title') }}:</label>
             <input type="text" name="title" id="title" required>
         </div>
 
         <div class="form-group">
-            <label for="default_contact">Default Contact:</label>
+            <label for="default_contact">{{ __('messages.default_contact') }}:</label>
             <select name="default_contact" id="default_contact" required>
-                <option value="phone">Phone</option>
-                <option value="whatsapp">WhatsApp</option>
-                <option value="telegram">Telegram</option>
-                <option value="email">Email</option>
+                <option value="phone">{{ __('messages.phone') }}</option>
+                <option value="whatsapp">{{ __('messages.whatsapp') }}</option>
+                <option value="telegram">{{ __('messages.telegram') }}</option>
+                <option value="email">{{ __('messages.email') }}</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label for="phone">Phone:</label>
+            <label for="phone">{{ __('messages.phone') }}:</label>
             <input type="text" name="phone" id="phone">
         </div>
 
         <div class="form-group">
-            <label for="whatsapp">WhatsApp:</label>
+            <label for="whatsapp">{{ __('messages.whatsapp') }}:</label>
             <input type="text" name="whatsapp" id="whatsapp">
         </div>
 
         <div class="form-group">
-            <label for="telegram">Telegram:</label>
+            <label for="telegram">{{ __('messages.telegram') }}:</label>
             <input type="text" name="telegram" id="telegram">
         </div>
 
         <div class="form-group">
-            <label for="email">Email:</label>
+            <label for="email">{{ __('messages.email') }}:</label>
             <input type="email" name="email" id="email">
         </div>
 
-        <button type="submit">Create Department</button>
+        <button type="submit">{{ __('messages.create') }}</button>
     </form>
 </div>
 

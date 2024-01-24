@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create New Category</title>
+    <title>{{ __('messages.create_new_category') }}</title>
 
 </head>
 <style>
@@ -58,25 +58,25 @@
 @include('components.navbar')
 
 <div class="create-category-container">
-    <h1>Create New Category</h1>
+    <h1>{{ __('messages.create_new_category') }}</h1>
 
     <form action="{{ route('categories.store') }}" method="POST">
         @csrf
 
         <div class="form-group">
-            <label for="title">Title:</label>
+            <label for="title">{{ __('messages.title') }}:</label>
             <input type="text" name="title" id="title" required>
         </div>
 
         <div class="form-group">
-            <label for="notifiable">Notifiable:</label>
+            <label for="notifiable">{{ __('messages.notifiable') }}:</label>
             <select name="notifiable" id="notifiable" required>
-                <option value="1">Yes</option>
-                <option value="0">No</option>
+                <option value="1">{{ __('messages.yes') }}</option>
+                <option value="0">{{ __('messages.no') }}</option>
             </select>
         </div>
 
-        <button type="submit">Create Category</button>
+        <button type="submit">{{ __('messages.create') }}</button>
     </form>
 </div>
 

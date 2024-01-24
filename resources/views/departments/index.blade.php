@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Departments</title>
+    <title>{{ __('messages.departments') }}</title>
 </head>
 <style>
     .departments-container {
@@ -103,25 +103,25 @@
 
 <div class="departments-container">
     <div class="departments-header">
-        <h1>Departments</h1>
+        <h1>{{ __('messages.departments') }}</h1>
         <span class="create-department-btn">
-            <a href="{{ route('departments.create') }}">Create New Department</a>
+            <a href="{{ route('departments.create') }}">{{ __('messages.create_new_department') }}</a>
         </span>
     </div>
     @foreach($departments as $department)
         <div class="department-card">
             <div class="department-info">
-                <span>Title: {{ $department->title }}</span>
+                <span>{{ __('messages.title') }}: {{ $department->title }}</span>
             </div>
             <div class="department-actions">
                 <a href="{{ route('departments.edit', $department->id) }}" class="action-icon" title="Edit">
-                    Edit
+                    {{ __('messages.edit') }}
                 </a>
                 <span class="delete-department-btn">
                     <form action="{{ route('departments.destroy', $department->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this department?')">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="action-button" title="Delete">Delete</button>
+                        <button type="submit" class="action-button" title="Delete">{{ __('messages.delete') }}</button>
                     </form>
                 </span>
             </div>

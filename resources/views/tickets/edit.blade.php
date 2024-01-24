@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create New Ticket</title>
+    <title>{{ __('messages.edit_ticket') }}</title>
 </head>
 <style>
     body {
@@ -57,46 +57,47 @@
 @include('components.navbar')
 
 <div class="create-ticket-container">
-    <h1>Create New Ticket</h1>
+    <h1>{{ __('messages.edit_ticket') }}</h1>
 
-    <form action="{{ route('tickets.store') }}" method="POST">
+    <form action="{{ route('tickets.update', $ticket->id) }}" method="POST">
+        @method('PATCH')
         @csrf
 
         <div class="form-group">
-            <label for="number">Ticket Number:</label>
+            <label for="number">{{ __('messages.ticket_number') }}</label>
             <input type="number" name="number" id="number" required>
         </div>
 
         <div class="form-group">
-            <label for="description">Description:</label>
+            <label for="description">{{ __('messages.description') }}:</label>
             <input type="text" name="description" id="description" required>
         </div>
 
         <div class="form-group">
-            <label for="priority">Priority:</label>
+            <label for="priority">{{ __('messages.priority') }}:</label>
             <select name="priority" id="priority" required>
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
+                <option value="low">{{ __('messages.low') }}</option>
+                <option value="medium">{{ __('messages.medium') }}</option>
+                <option value="high">{{ __('messages.high') }}</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label for="reported_by_phone">Reported By Phone:</label>
+            <label for="reported_by_phone">{{ __('messages.reported_by_phone') }}</label>
             <input type="number" name="reported_by_phone" id="reported_by_phone" required>
         </div>
 
         <div class="form-group">
-            <label for="contact_phone">Contact Phone:</label>
+            <label for="contact_phone">{{ __('messages.phone') }}</label>
             <input type="number" name="contact_phone" id="contact_phone" required>
         </div>
 
         <div class="form-group">
-            <label for="reported_model_type">Reported Model Type:</label>
+            <label for="reported_model_type">{{ __('messages.reported_model_type') }}</label>
             <input type="text" name="reported_model_type" id="reported_model_type" required>
         </div>
 
-        <button type="submit">Create Ticket</button>
+        <button type="submit">{{ __('messages.create') }}</button>
     </form>
 </div>
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create New User</title>
+    <title>{{ __('messages.edit_user') }}</title>
 
 </head>
 <style>
@@ -58,39 +58,39 @@
 @include('components.navbar')
 
 <div class="create-user-container">
-    <h1>Edit User</h1>
+    <h1>{{ __('messages.edit_user') }}</h1>
 
     <form action="{{ route('users.update', $user->id) }}" method="POST">
         @csrf
         @method('PATCH')
 
         <div class="form-group">
-            <label for="name">Name:</label>
+            <label for="name">{{ __('messages.name') }}:</label>
             <input type="text" name="name" id="name" value="{{ $user->name }}" required>
         </div>
 
         <div class="form-group">
-            <label for="email">Email:</label>
+            <label for="email">{{ __('messages.email') }}:</label>
             <input type="email" name="email" id="email" value="{{ $user->email }}" required>
         </div>
 
         <div class="form-group">
-            <label for="password">Password:</label>
+            <label for="password">{{ __('messages.password') }}:</label>
             <input type="password" name="password" id="password">
-            <small>Leave blank to keep the existing password</small>
+            <small>{{ __('messages.leave_blank_to_keep_the_existing_password') }}</small>
         </div>
 
         <div class="form-group">
-            <label for="dob">Date of Birth:</label>
+            <label for="dob">{{ __('messages.dob') }}</label>
             <input type="date" name="dob" id="dob" value="{{ $user->dob }}" required>
         </div>
 
         <div class="form-group">
-            <label for="identification_number">Identification Number:</label>
+            <label for="identification_number">{{ __('messages.identification_number') }}</label>
             <input type="text" name="identification_number" id="identification_number" value="{{ $user->identification_number }}" required>
         </div>
 
-        <button type="submit">Update User</button>
+        <button type="submit">{{ __('messages.update') }}</button>
     </form>
 </div>
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Department</title>
+    <title>{{ __('messages.edit_department') }}</title>
 
 </head>
 <style>
@@ -58,48 +58,48 @@
 @include('components.navbar')
 
 <div class="edit-department-container">
-    <h1>Edit Department</h1>
+    <h1>{{ __('messages.edit_department') }}</h1>
 
     <form action="{{ route('departments.update', $department->id) }}" method="POST">
         @csrf
-        @method('PUT') <!-- Use PUT method for update -->
+        @method('PUT')
 
         <div class="form-group">
-            <label for="title">Title:</label>
+            <label for="title">{{ __('messages.title') }}:</label>
             <input type="text" name="title" id="title" value="{{ $department->title }}" required>
         </div>
 
         <div class="form-group">
-            <label for="default_contact">Default Contact:</label>
+            <label for="default_contact">{{ __('messages.default_contact') }}:</label>
             <select name="default_contact" id="default_contact" required>
-                <option value="phone" {{ $department->default_contact === 'phone' ? 'selected' : '' }}>Phone</option>
-                <option value="whatsapp" {{ $department->default_contact === 'whatsapp' ? 'selected' : '' }}>WhatsApp</option>
-                <option value="telegram" {{ $department->default_contact === 'telegram' ? 'selected' : '' }}>Telegram</option>
-                <option value="email" {{ $department->default_contact === 'email' ? 'selected' : '' }}>Email</option>
+                <option value="phone" {{ $department->default_contact === 'phone' ? 'selected' : '' }}>{{ __('messages.phone') }}</option>
+                <option value="whatsapp" {{ $department->default_contact === 'whatsapp' ? 'selected' : '' }}>{{ __('messages.whatsapp') }}</option>
+                <option value="telegram" {{ $department->default_contact === 'telegram' ? 'selected' : '' }}>{{ __('messages.telegram') }}</option>
+                <option value="email" {{ $department->default_contact === 'email' ? 'selected' : '' }}>{{ __('messages.email') }}</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label for="phone">Phone:</label>
+            <label for="phone">{{ __('messages.phone') }}:</label>
             <input type="text" name="phone" id="phone" value="{{ $department->phone }}">
         </div>
 
         <div class="form-group">
-            <label for="whatsapp">WhatsApp:</label>
+            <label for="whatsapp">{{ __('messages.whatsapp') }}:</label>
             <input type="text" name="whatsapp" id="whatsapp" value="{{ $department->whatsapp }}">
         </div>
 
         <div class="form-group">
-            <label for="telegram">Telegram:</label>
+            <label for="telegram">{{ __('messages.telegram') }}:</label>
             <input type="text" name="telegram" id="telegram" value="{{ $department->telegram }}">
         </div>
 
         <div class="form-group">
-            <label for="email">Email:</label>
+            <label for="email">{{ __('messages.email') }}:</label>
             <input type="email" name="email" id="email" value="{{ $department->email }}">
         </div>
 
-        <button type="submit">Update Department</button>
+        <button type="submit">{{ __('messages.update') }}</button>
     </form>
 </div>
 

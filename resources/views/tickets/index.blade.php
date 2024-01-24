@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tickets</title>
+    <title>{{ __('messages.tickets') }}</title>
 </head>
 <style>
     .tickets-container {
@@ -105,25 +105,25 @@
     <div class="tickets-header">
         <h1>Tickets</h1>
         <span class="create-ticket-btn">
-            <a href="{{ route('tickets.create') }}">Create New Ticket</a>
+            <a href="{{ route('tickets.create') }}">{{ __('messages.create_new_ticket') }}</a>
         </span>
     </div>
     @foreach($tickets as $ticket)
         <div class="ticket-card">
             <div class="ticket-info">
-                <span>Number: {{ $ticket->number }}</span>
-                <span>Description: {{ $ticket->description }}</span>
-                <span>Priority: {{ $ticket->priority }}</span>
+                <span>{{ __('messages.number') }}: {{ $ticket->number }}</span>
+                <span>{{ __('messages.description') }}: {{ $ticket->description }}</span>
+                <span>{{ __('messages.priority') }}: {{ __('messages.' . $ticket->priority) }}</span>
             </div>
             <div class="ticket-actions">
                 <a href="{{ route('tickets.edit', $ticket->id) }}" class="action-icon" title="Edit">
-                    Edit
+                    {{ __('messages.edit') }}
                 </a>
                 <span class="delete-ticket-btn">
                     <form action="{{ route('tickets.destroy', $ticket->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this ticket?')">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="action-button" title="Delete">Delete</button>
+                        <button type="submit" class="action-button" title="Delete">{{ __('messages.delete') }}</button>
                     </form>
                 </span>
             </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Category</title>
+    <title>{{ __('messages.edit_category') }}</title>
 
 </head>
 <style>
@@ -65,19 +65,19 @@
         @method('PATCH')
 
         <div class="form-group">
-            <label for="title">Title:</label>
+            <label for="title">{{ __('messages.title') }}:</label>
             <input type="text" name="title" id="title" value="{{ $category->title }}" required>
         </div>
 
         <div class="form-group">
-            <label for="notifiable">Notifiable:</label>
+            <label for="notifiable">{{ __('messages.notifiable') }}:</label>
             <select name="notifiable" id="notifiable" required>
-                <option value="1" {{ $category->notifiable ? 'selected' : '' }}>Yes</option>
-                <option value="0" {{ !$category->notifiable ? 'selected' : '' }}>No</option>
+                <option value="1" {{ $category->notifiable ? 'selected' : '' }}>{{ __('messages.yes') }}</option>
+                <option value="0" {{ !$category->notifiable ? 'selected' : '' }}>{{ __('messages.no') }}</option>
             </select>
         </div>
 
-        <button type="submit">Update Category</button>
+        <button type="submit">{{ __('messages.update') }}</button>
     </form>
 </div>
 

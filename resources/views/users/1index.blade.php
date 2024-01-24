@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users</title>
+    <title>{{ __('messages.users') }}</title>
 </head>
 <style>
     .users-container {
@@ -103,25 +103,25 @@
 
 <div class="users-container">
     <div class="users-header">
-        <h1>Users</h1>
+        <h1>{{ __('messages.users') }}</h1>
         <span class="create-user-btn">
-            <a href="{{ route('users.create') }}">Create New User</a>
+            <a href="{{ route('users.create') }}">{{ __('messages.create_new_user') }}</a>
         </span>
     </div>
     @foreach($users as $user)
         <div class="user-card">
             <div class="user-info">
-                <span>Name: {{ $user->name }}</span>
+                <span>{{ __('messages.name') }}: {{ $user->name }}</span>
             </div>
             <div class="user-actions">
                 <a href="{{ route('users.edit', $user->id) }}" class="action-icon" title="Edit">
-                    Edit
+                    {{ __('messages.edit') }}
                 </a>
                 <span class="delete-user-btn">
                     <form action="{{ route('users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?')">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="action-button" title="Delete">Delete</button>
+                        <button type="submit" class="action-button" title="Delete">{{ __('messages.delete') }}</button>
                     </form>
                 </span>
             </div>

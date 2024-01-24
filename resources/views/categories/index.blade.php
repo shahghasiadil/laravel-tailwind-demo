@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Categories</title>
+    <title>{{ __('messages.categories') }}</title>
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <!-- Additional head content -->
 </head>
@@ -105,26 +105,26 @@
 
 <div class="categories-container">
     <div class="categories-header">
-        <h1>Categories</h1>
+        <h1>{{ __('messages.categories') }}</h1>
         <span class="create-category-btn">
-            <a href="{{ route('categories.create') }}">Create New Category</a>
+            <a href="{{ route('categories.create') }}">{{ __('messages.create_new_category') }}</a>
         </span>
     </div>
     @foreach($categories as $category)
         <div class="category-card">
             <div class="category-info">
-                <span>Title: {{ $category->title }}</span>
+                <span>{{ __('messages.title') }}: {{ $category->title }}</span>
                 <!-- Add other category information as needed -->
             </div>
             <div class="category-actions">
                 <a href="{{ route('categories.edit', $category->id) }}" class="action-icon" title="Edit">
-                    Edit
+                    {{ __('messages.edit') }}
                 </a>
                 <span class="delete-category-btn">
                     <form action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this category?')">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="action-button" title="Delete">Delete</button>
+                        <button type="submit" class="action-button" title="Delete">{{ __('messages.delete') }}</button>
                     </form>
                 </span>
             </div>

@@ -158,7 +158,7 @@
         <span class="language-arrow">&#9660;</span>
         <div class="language-options">
             <a href="{{ route('setLocale', ['locale' => 'en']) }}">en</a>
-            <a href="{{ route('setLocale', ['locale' => 'mne']) }}">mne</a>
+            <a href="{{ route('setLocale', ['locale' => 'me']) }}">me</a>
             <!-- Add more languages as needed -->
         </div>
     </div>
