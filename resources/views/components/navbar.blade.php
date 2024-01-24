@@ -80,10 +80,42 @@
         display: block;
     }
 
-    .language-switch {
+    .language-switch-dropdown {
+        position: relative;
+        cursor: pointer;
         display: flex;
         align-items: center;
-        margin-right: 15px;
+    }
+
+    .language-options {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: #333;
+        border: 1px solid #555;
+        border-radius: 5px;
+        padding: 5px 0;
+        z-index: 1;
+    }
+
+    .language-options a {
+        display: block;
+        padding: 8px 12px;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .language-options a:hover {
+        background-color: #555;
+    }
+
+    .language-switch-dropdown:hover .language-options {
+        display: block;
+    }
+
+    .language-arrow {
+        margin-left: 5px;
     }
 
 </style>
@@ -119,14 +151,16 @@
         </div>
     </div>
 
-    <div class="language-switch">
-        <a href="{{ route('setLocale', ['locale' => 'en']) }}">
-            en
-        </a>
-
-        <a href="{{ route('setLocale', ['locale' => 'mne']) }}">
-            mne
-        </a>
+    <div class="language-switch-dropdown">
+        <span>
+            {{ app()->getLocale() }}
+        </span>
+        <span class="language-arrow">&#9660;</span>
+        <div class="language-options">
+            <a href="{{ route('setLocale', ['locale' => 'en']) }}">en</a>
+            <a href="{{ route('setLocale', ['locale' => 'mne']) }}">mne</a>
+            <!-- Add more languages as needed -->
+        </div>
     </div>
     <button class="logout-btn" onclick="location.href='#'">{{ __('messages.logout') }}</button>
 </nav>
