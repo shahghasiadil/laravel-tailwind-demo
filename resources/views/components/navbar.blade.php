@@ -80,38 +80,53 @@
         display: block;
     }
 
+    .language-switch {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+    }
 
 </style>
 <nav>
     <div class="tabs-container">
         <div class="dropdown">
-            <span>Users</span>
+            <span>{{ __('messages.users') }}</span>
             <div class="dropdown-options">
-                <a href={{ route('users.index') }}>See all</a>
-                <a href="{{ route('users.create') }}">Add new</a>
+                <a href={{ route('users.index') }}>{{ __('messages.see_all') }}</a>
+                <a href="{{ route('users.create') }}">{{ __('messages.add_new') }}</a>
             </div>
         </div>
         <div class="dropdown">
-            <span>Categories</span>
+            <span>{{ __('messages.categories') }}</span>
             <div class="dropdown-options">
-                <a href="{{ route('categories.index') }}">See all</a>
-                <a href="{{ route('categories.create') }}">Add new</a>
+                <a href="{{ route('categories.index') }}">{{ __('messages.see_all') }}</a>
+                <a href="{{ route('categories.create') }}">{{ __('messages.add_new') }}</a>
             </div>
         </div>
         <div class="dropdown">
-            <span>Departments</span>
+            <span>{{ __('messages.departments') }}</span>
             <div class="dropdown-options">
-                <a href="{{ route('departments.index') }}">See all</a>
-                <a href="{{ route('departments.create') }}">Add new</a>
+                <a href="{{ route('departments.index') }}">{{ __('messages.see_all') }}</a>
+                <a href="{{ route('departments.create') }}">{{ __('messages.add_new') }}</a>
             </div>
         </div>
         <div class="dropdown">
-            <span>Tickets</span>
+            <span>{{ __('messages.tickets') }}</span>
             <div class="dropdown-options">
-                <a href="{{ route('tickets.index') }}">See all</a>
-                <a href="{{ route('tickets.create') }}">Add new</a>
+                <a href="{{ route('tickets.index') }}">{{ __('messages.see_all') }}</a>
+                <a href="{{ route('tickets.create') }}">{{ __('messages.add_new') }}</a>
             </div>
         </div>
     </div>
-    <button class="logout-btn" onclick="location.href='#'">Logout</button>
+
+    <div class="language-switch">
+        <a href="{{ route('setLocale', ['locale' => 'en']) }}">
+            en
+        </a>
+
+        <a href="{{ route('setLocale', ['locale' => 'mne']) }}">
+            mne
+        </a>
+    </div>
+    <button class="logout-btn" onclick="location.href='#'">{{ __('messages.logout') }}</button>
 </nav>

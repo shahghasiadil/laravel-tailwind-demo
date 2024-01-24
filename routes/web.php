@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ProfileController;
 
 
@@ -47,6 +48,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('departments', DepartmentController::class);
     Route::resource('tickets', TicketController::class);
+
+    Route::get('setLocale/{locale}', [LocaleController::class, 'setLocale'])->name('setLocale');
+
 });
 
 
