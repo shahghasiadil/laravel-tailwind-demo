@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('department_id')->references('id')->on('departments')->onDelete('cascade');
             $table->timestamp('start_at')->comment('start work in department at');
-            $table->timestamp('end_at')->comment('end work or moved from department at');
+            $table->timestamp('end_at')->nullable()->comment('end work or moved from department at');
             $table->text('weekdaystime')->comment('JSON -> weekly calendar of working hours from-to for all days of the week, this is used to notify department personnel');
             $table->foreignId('created_by')->references('id')->on('users');
             $table->foreignId('updated_by')->references('id')->on('users');
