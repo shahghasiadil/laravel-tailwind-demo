@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreDepartmentRequest;
 use App\Http\Requests\UpdateDepartmentRequest;
+use App\Models\Category;
 use App\Models\Department;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class DepartmentController extends Controller
 {
@@ -18,14 +20,18 @@ class DepartmentController extends Controller
 
     public function create()
     {
-        return view('departments.create');
+        return view('departments.create', [
+            'categories' => Category::all(),
+        ]);
     }
 
     public function store(StoreDepartmentRequest $request)
     {
         $attributes = $request->validated();
 
-        $department = Department::create($attributes);
+        $department = Department::create(Arr::except($attributes, 'categories'));
+
+        $department->categories()->attach($attributes['categories']);
 
         return redirect()->route('departments.index')->with('success', 'Department created successfully');
     }

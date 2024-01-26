@@ -10,9 +10,11 @@ class Category extends Model
     use HasFactory;
 
     protected $guarded = [];
+// Category.php
+
     public function departments()
     {
-        return $this->belongsToMany(Department::class, 'category_departments','department_id');
+        return $this->belongsToMany(Department::class, 'category_departments', 'category_id', 'department_id');
     }
 
     public function tickets()

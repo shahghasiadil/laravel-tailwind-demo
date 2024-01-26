@@ -40,6 +40,15 @@
         border-radius: 3px;
     }
 
+    .checkbox-label {
+        display: flex;
+        align-items: center;
+    }
+
+    .checkbox-label input {
+        margin-right: 5px;
+    }
+
     button {
         background-color: #007bff;
         color: #fff;
@@ -52,6 +61,31 @@
     button:hover {
         background-color: #0056b3;
     }
+
+    .form-group select[multiple] {
+        height: 90px;
+    }
+
+    .checkbox-label {
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px; /* Add margin for better spacing between checkboxes */
+    }
+
+    .checkbox-label input {
+        margin-right: 10px; /* Add margin to the right of the checkbox */
+    }
+
+    .checkbox-label label {
+        margin-left: 10px; /* Add margin to the left of the label */
+    }
+
+    .checkbox-box {
+        width:40%;
+        background: red;
+    }
+
+
 </style>
 <body>
 
@@ -96,6 +130,16 @@
         <div class="form-group">
             <label for="email">{{ __('messages.email') }}:</label>
             <input type="email" name="email" id="email">
+        </div>
+
+        <div class="form-group">
+            <label for="categories">{{ __('messages.categories') }}:</label>
+            @foreach($categories as $category)
+                <div class="checkbox-label">
+                    <input class="checkbox-box" type="checkbox" name="categories[]" id="category_{{ $category->id }}" value="{{ $category->id }}">
+                    <label for="category_{{ $category->id }}">{{ $category->title }}</label>
+                </div>
+            @endforeach
         </div>
 
         <button type="submit">{{ __('messages.create') }}</button>

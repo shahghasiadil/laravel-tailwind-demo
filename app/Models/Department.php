@@ -18,6 +18,6 @@ class Department extends Model
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'category_departments','category_id');
+        return $this->belongsToMany(Category::class, 'category_departments', 'department_id', 'category_id');
     }
 }
