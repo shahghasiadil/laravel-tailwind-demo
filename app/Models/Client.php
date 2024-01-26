@@ -11,7 +11,7 @@ class Client extends Model
 
     public function tickets()
     {
-        return $this->belongsToMany(Ticket::class, 'client_tickets', 'ticket_id');
+        return $this->belongsToMany(Ticket::class, 'client_tickets', 'ticket_id', 'client_id');
     }
 
     public function clientMessages()

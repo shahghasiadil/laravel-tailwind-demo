@@ -19,7 +19,7 @@ class Category extends Model
 
     public function tickets()
     {
-        return $this->belongsToMany(Ticket::class, 'ticket_categories', 'ticket_id');
+        return $this->belongsToMany(Ticket::class, 'ticket_categories', 'category_id', 'ticket_id');
     }
 
 }

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
+use App\Models\Category;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class TicketController extends Controller
 {
@@ -18,7 +20,9 @@ class TicketController extends Controller
 
     public function create()
     {
-        return view('tickets.create');
+        return view('tickets.create', [
+            'categories' => Category::all(),
+        ]);
     }
 
     public function store(StoreTicketRequest $request)
@@ -27,7 +31,9 @@ class TicketController extends Controller
 
         $attributes['created_by'] = auth()->id();
 
-        $ticket = Ticket::create($attributes);
+        $ticket = Ticket::create(Arr::except($attributes, 'categories'));
+
+        $ticket->categories()->attach($attributes['categories']);
 
         return redirect()->route('tickets.index')->with('success', 'Ticket created successfully');
     }

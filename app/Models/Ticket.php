@@ -26,14 +26,15 @@ class Ticket extends Model
     {
         return $this->belongsTo(Client::class, 'closed_by');
     }
+
     public function clients()
     {
-        return $this->belongsToMany(Client::class, 'client_tickets', 'client_id');
+        return $this->belongsToMany(Client::class, 'client_tickets', 'client_id', 'ticket_id');
     }
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'ticket_categories', 'category_id');
+        return $this->belongsToMany(Category::class, 'ticket_categories', 'ticket_id', 'category_id');
     }
 
     public function clientMessages()
