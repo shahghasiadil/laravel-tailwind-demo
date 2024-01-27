@@ -9,6 +9,7 @@ return [
     'add_new' => 'Add new',
     'logout' => 'Logout',
     'create_new_category' => 'Create New Category',
+    'update_category' => 'Update Category',
     'create_new_user' => 'Create New User',
     'create_new_department' => 'Create New Department',
     'create_new_ticket' => 'Create New Ticket',
