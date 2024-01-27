@@ -79,6 +79,9 @@
 
                         </tbody>
                     </table>
+                    <div class="pagination-container py-4">
+                        {{ $departments->links() }}
+                    </div>
                 </div>
 
             </div>
