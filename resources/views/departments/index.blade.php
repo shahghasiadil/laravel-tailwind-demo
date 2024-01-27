@@ -95,7 +95,7 @@
 
                         const currentForm = this;
                         Swal.fire({
-                            title: `Are you sure you want to delete this Category?`,
+                            title: `Are you sure you want to delete this Department?`,
                             text: "If you delete this, it will be gone forever.",
                             icon: "warning",
                             buttons: true,
