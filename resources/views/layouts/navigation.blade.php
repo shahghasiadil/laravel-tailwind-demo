@@ -17,18 +17,24 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
                         {{ __('Users') }}
                     </x-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories/*')">
+                    <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.*')">
                         {{ __('Categories') }}
                     </x-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('departments.index')" :active="request()->routeIs('departments.*')">
+                        {{ __('Departments') }}
+                    </x-nav-link>
+                </div>
+
+                {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
 
                     <div class="flex">
                         <button id="states-button" data-dropdown-toggle="dropdown-states"
@@ -179,7 +185,7 @@
 
 
                     <!-- Add more links for additional languages -->
-                </div>
+                </div> --}}
 
 
 
@@ -191,8 +197,7 @@
                     <div class="flex flex-col justify-center ml-3">
                         <input type="checkbox" name="light-switch" id="light-switch" class="light-switch sr-only" />
                         <label class="relative cursor-pointer p-2" for="light-switch">
-                            <svg class="dark:hidden" width="16" height="16"
-                                xmlns="http://www.w3.org/2000/svg">
+                            <svg class="dark:hidden" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
                                 <path class="fill-slate-300"
                                     d="M7 0h2v2H7zM12.88 1.637l1.414 1.415-1.415 1.413-1.413-1.414zM14 7h2v2h-2zM12.95 14.433l-1.414-1.413 1.413-1.415 1.415 1.414zM7 14h2v2H7zM2.98 14.364l-1.413-1.415 1.414-1.414 1.414 1.415zM0 7h2v2H0zM3.05 1.706 4.463 3.12 3.05 4.535 1.636 3.12z" />
                                 <path class="fill-slate-400" d="M8 4C5.8 4 4 5.8 4 8s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4Z" />
