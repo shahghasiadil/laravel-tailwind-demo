@@ -80,7 +80,7 @@
                         </tbody>
                     </table>
                     <div class="pagination-container py-4">
-                        {{ $tickets->links() }}
+                        {{ $categories->links() }}
                     </div>
                 </div>
 
