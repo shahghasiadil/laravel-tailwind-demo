@@ -13,7 +13,7 @@ class CategoryController extends Controller
     public function index()
     {
         return view('categories.index', [
-            'categories' => Category::latest()->get(),
+            'categories' => Category::latest()->paginate(10),
         ]);
     }
 
