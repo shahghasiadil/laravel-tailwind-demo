@@ -57,8 +57,7 @@
 
                                         <span>
                                             <form action="{{ route('categories.destroy', $category->id) }}"
-                                                method="POST"
-                                                onsubmit="return confirm('Are you sure you want to delete this category?')">
+                                                method="POST" class="delete__category">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="action-button" title="Delete">
@@ -86,4 +85,29 @@
         </div>
     </div>
     </div>
+
+    @push('scripts')
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelectorAll('.delete__category').forEach(function(form) {
+                    form.addEventListener('submit', function(event) {
+                        event.preventDefault();
+
+                        const currentForm = this;
+                        Swal.fire({
+                            title: `Are you sure you want to delete this Catgeory?`,
+                            text: "If you delete this, it will be gone forever.",
+                            icon: "warning",
+                            buttons: true,
+                            dangerMode: true,
+                        }).then((willDelete) => {
+                            if (willDelete) {
+                                currentForm.submit();
+                            }
+                        });
+                    });
+                });
+            });
+        </script>
+    @endpush
 </x-app-layout>
