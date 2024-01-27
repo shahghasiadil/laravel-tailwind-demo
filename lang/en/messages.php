@@ -42,5 +42,6 @@ return [
     'edit' => 'Edit',
     'delete' => 'Delete',
     'update' => 'Update',
+    'action' => 'Action',
     'leave_blank_to_keep_the_existing_password' => 'Leave blank to keep the existing password',
 ];
