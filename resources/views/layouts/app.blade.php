@@ -44,8 +44,12 @@
             {{ $slot }}
         </main>
     </div>
-
-
+    <x-bladewind::notification />
+    @if (session()->has('success'))
+        <script>
+            showNotification('Success', '{{ session()->get('success') }}');
+        </script>
+    @endif
     <script src="{{ asset('js/flowbite.min.js') }}"></script>
 
     <script>
