@@ -65,10 +65,8 @@ class DepartmentController extends Controller
     public function destroy(Department $department)
     {
 
-        if($department->delete()){
-            return response()->json([200]);
-        }
+        $department->delete();
 
-        return response()->json([404]);
+        return response()->json(['success' => 'Department deleted successfully']);
     }
 }
