@@ -12,8 +12,14 @@ class CategoryController extends Controller
 
     public function index()
     {
+        $action_icons = [
+            "icon:pencil | click:redirect('categories/{id}/edit')",
+            "icon:trash | color:red | click:deleteCategory({id}, '{title}')"
+        ];
         return view('categories.index', [
             'categories' => Category::latest()->paginate(10),
+            'captions'=>['title'=>__('messages.title')],
+            'action_icons' => $action_icons
         ]);
     }
 
