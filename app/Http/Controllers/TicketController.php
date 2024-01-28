@@ -13,9 +13,16 @@ class TicketController extends Controller
 {
     public function index()
     {
+        $action_icons = [
+            "icon:pencil | click:redirect('tickets/{id}/edit')",
+            "icon:trash | color:red | click:deleteTicket({id}, '{number}')"
+        ];
         return view('tickets.index', [
-            'tickets' => Ticket::latest()->paginate(10),
+            'captions'=>['number'=>__('messages.number'), "priority" => __('messages.priority'), "description" => __('messages.description')],
+            'action_icons' => $action_icons,
+            'tickets' => Ticket::latest()->select('id','number', 'priority', 'description')->paginate(10),
         ]);
+
     }
 
     public function create()
@@ -33,7 +40,9 @@ class TicketController extends Controller
 
         $ticket = Ticket::create(Arr::except($attributes, 'categories'));
 
-        $ticket->categories()->attach($attributes['categories']);
+        $categoryIds = array_map('intval', explode(',', $attributes['categories']));
+
+        $ticket->categories()->attach($categoryIds);
 
         return redirect()->route('tickets.index')->with('success', 'Ticket created successfully');
     }
