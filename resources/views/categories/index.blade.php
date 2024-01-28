@@ -113,7 +113,7 @@
         executDelete = () => {
             const id = document.getElementById('cat_id').value;
             if (id) {
-                fetch(`/tickets/${id}`, {
+                fetch(`/categories/${id}`, {
                         method: 'delete',
                         headers: {
                             'X-CSRF-TOKEN': '{{ csrf_token() }}'
