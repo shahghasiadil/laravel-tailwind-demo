@@ -96,7 +96,7 @@
                         <x-text-input id="id" type="hidden" />
                     </x-bladewind::modal>
                 </div>
-
+                <x-bladewind::notification />
             </div>
         </div>
     </div>
@@ -112,8 +112,7 @@
         executDelete = () => {
             const id = document.getElementById('id').value;
             if (id) {
-                fetch(`/departments/${id}`, {
-                        method: 'delete',
+                axios.delete(route('departments.destroy', id), {
                         headers: {
                             'X-CSRF-TOKEN': '{{ csrf_token() }}'
                         },

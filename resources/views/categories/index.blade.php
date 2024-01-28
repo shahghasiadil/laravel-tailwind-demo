@@ -81,8 +81,8 @@
                         </tbody>
                     </table> --}}
                     <x-bladewind::table :data="$categories->toArray()['data']" :action_icons="$action_icons" :column_aliases="$captions"
-                        exclude_columns="id, updated_at, deleted_at, created_at" striped="true" divider="thin"
-                        has_shadow="true" compact="true" actions_title="{{ __('Actions') }}" />
+                        exclude_columns="id, updated_at, deleted_at, created_at, notifiable" striped="true"
+                        divider="thin" has_shadow="true" compact="true" actions_title="{{ __('Actions') }}" />
 
                     <div class="pagination-container py-4">
                         {{ $categories->links() }}
@@ -113,8 +113,7 @@
         executDelete = () => {
             const id = document.getElementById('cat_id').value;
             if (id) {
-                fetch(`/categories/${id}`, {
-                        method: 'delete',
+                axios.delete(route('categories.destroy', id), {
                         headers: {
                             'X-CSRF-TOKEN': '{{ csrf_token() }}'
                         },
