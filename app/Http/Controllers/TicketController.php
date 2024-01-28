@@ -67,6 +67,6 @@ class TicketController extends Controller
     {
         $ticket->delete();
 
-        return redirect()->route('tickets.index')->with('success', 'Ticket deleted successfully');
+        return response()->json(['success' => 'Ticket deleted successfully']);
     }
 }
