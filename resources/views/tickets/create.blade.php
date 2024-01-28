@@ -18,6 +18,7 @@
                 <div class="form-group mb-4">
                     <x-input-label for="number" :value="__('messages.ticket_number')" />
                     <x-text-input id="number" name="number" type="number" class="mt-1 block w-full" required />
+
                     <x-input-error :messages="$errors->get('number')" />
                 </div>
 
@@ -30,13 +31,13 @@
 
                 <div class="form-group mb-4">
                     <x-input-label for="priority" :value="__('messages.priority')" />
-                    <select id="priority" name="priority"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
-                        required>
-                        <option value="low">{{ __('messages.low') }}</option>
-                        <option value="medium">{{ __('messages.medium') }}</option>
-                        <option value="high">{{ __('messages.high') }}</option>
-                    </select>
+
+                    <x-bladewind::select name="priority" placeholder="Select Priority" data="manual" required="true">
+                        <x-bladewind::select-item label="{{ __('messages.low') }}" value="low" />
+                        <x-bladewind::select-item label="{{ __('messages.medium') }}" value="medium" />
+                        <x-bladewind::select-item label="{{ __('messages.high') }}" value="high" />
+                    </x-bladewind::select>
+
                 </div>
 
                 <div class="form-group mb-4">
@@ -52,15 +53,26 @@
                         required />
                     <x-input-error :messages="$errors->get('contact_phone')" />
                 </div>
+                <div class="">
 
-                <div class="form-group mb-4">
+                    <x-bladewind::select name="categories" placeholder="category" data="manual" searchable="true"
+                        required="true" multiple="true">
+                        @foreach ($categories as $item)
+                            <x-bladewind::select-item label="{{ $item->title }}" value="{{ $item->id }}" />
+                        @endforeach
+                    </x-bladewind::select>
+
+                    <x-input-error :messages="$errors->get('categories')" />
+                </div>
+                <div class="form-group mb-4 mt-6">
                     <x-input-label for="reported_model_type" :value="__('messages.reported_model_type')" />
                     <x-text-input id="reported_model_type" name="reported_model_type" type="text"
                         class="mt-1 block w-full" required />
                     <x-input-error :messages="$errors->get('reported_model_type')" />
                 </div>
 
-                <div>
+
+                {{-- <div>
 
                     <button id="dropdownSearchButton" data-dropdown-toggle="dropdownSearch"
                         class="inline-flex items-center px-4 w-full h-full justify-center py-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -106,7 +118,7 @@
 
                     </div>
 
-                </div>
+                </div> --}}
 
                 <x-primary-button>{{ __('messages.create') }}</x-primary-button>
             </form>

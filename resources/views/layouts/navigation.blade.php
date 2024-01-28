@@ -18,29 +18,29 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
-                        {{ __('Users') }}
+                        {{ __('messages.users') }}
                     </x-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.*')">
-                        {{ __('Categories') }}
+                        {{ __('messages.categories') }}
                     </x-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('departments.index')" :active="request()->routeIs('departments.*')">
-                        {{ __('Departments') }}
+                        {{ __('messages.departments') }}
                     </x-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('tickets.index')" :active="request()->routeIs('tickets.*')">
-                        {{ __('Tickets') }}
+                        {{ __('messages.tickets') }}
                     </x-nav-link>
                 </div>
 
-                {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <div class="hidden space-x-4 sm:-my-px sm:ms-10 sm:flex">
 
                     <div class="flex">
                         <button id="states-button" data-dropdown-toggle="dropdown-states"
@@ -85,17 +85,20 @@
                                     </linearGradient>
                                 </defs>
                             </svg>
-                            USA <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 1 4 4 4-4" />
-                            </svg>
+                            @if (app()->getLocale() == 'en')
+                                {{ app()->getLocale() }} <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 4 4 4-4" />
+                                </svg>
+                            @endif
+
                         </button>
                         <div id="dropdown-states"
                             class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="states-button">
                                 <li>
-                                    <button type="button"
+                                    <a href="{{ route('setLocale', ['locale' => 'en']) }}"
                                         class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
                                         <div class="inline-flex items-center">
                                             <svg aria-hidden="true" class="h-3.5 w-3.5 rounded-full me-2"
@@ -117,72 +120,9 @@
                                                         transform="scale(3.9385)" />
                                                 </g>
                                             </svg>
-                                            United States
+                                            en
                                         </div>
-                                    </button>
-                                </li>
-                                <li>
-                                    <button type="button"
-                                        class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
-                                        <div class="inline-flex items-center">
-                                            <svg aria-hidden="true" class="h-3.5 w-3.5 rounded-full me-2"
-                                                xmlns="http://www.w3.org/2000/svg" id="flag-icon-css-de"
-                                                viewBox="0 0 512 512">
-                                                <path fill="#ffce00" d="M0 341.3h512V512H0z" />
-                                                <path d="M0 0h512v170.7H0z" />
-                                                <path fill="#d00" d="M0 170.7h512v170.6H0z" />
-                                            </svg>
-                                            Germany
-                                        </div>
-                                    </button>
-                                </li>
-                                <li>
-                                    <button type="button"
-                                        class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
-                                        <div class="inline-flex items-center">
-                                            <svg aria-hidden="true" class="h-3.5 w-3.5 rounded-full me-2"
-                                                xmlns="http://www.w3.org/2000/svg" id="flag-icon-css-it"
-                                                viewBox="0 0 512 512">
-                                                <g fill-rule="evenodd" stroke-width="1pt">
-                                                    <path fill="#fff" d="M0 0h512v512H0z" />
-                                                    <path fill="#009246" d="M0 0h170.7v512H0z" />
-                                                    <path fill="#ce2b37" d="M341.3 0H512v512H341.3z" />
-                                                </g>
-                                            </svg>
-                                            Italy
-                                        </div>
-                                    </button>
-                                </li>
-                                <li>
-                                    <button type="button"
-                                        class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
-                                        <div class="inline-flex items-center">
-                                            <svg aria-hidden="true" class="h-3.5 w-3.5 rounded-full me-2"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" id="flag-icon-css-cn"
-                                                viewBox="0 0 512 512">
-                                                <defs>
-                                                    <path id="a" fill="#ffde00"
-                                                        d="M1-.3L-.7.8 0-1 .6.8-1-.3z" />
-                                                </defs>
-                                                <path fill="#de2910" d="M0 0h512v512H0z" />
-                                                <use width="30" height="20"
-                                                    transform="matrix(76.8 0 0 76.8 128 128)" xlink:href="#a" />
-                                                <use width="30" height="20"
-                                                    transform="rotate(-121 142.6 -47) scale(25.5827)"
-                                                    xlink:href="#a" />
-                                                <use width="30" height="20"
-                                                    transform="rotate(-98.1 198 -82) scale(25.6)" xlink:href="#a" />
-                                                <use width="30" height="20"
-                                                    transform="rotate(-74 272.4 -114) scale(25.6137)"
-                                                    xlink:href="#a" />
-                                                <use width="30" height="20"
-                                                    transform="matrix(16 -19.968 19.968 16 256 230.4)"
-                                                    xlink:href="#a" />
-                                            </svg>
-                                            China
-                                        </div>
-                                    </button>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -191,7 +131,7 @@
 
 
                     <!-- Add more links for additional languages -->
-                </div> --}}
+                </div>
 
 
 
@@ -203,7 +143,8 @@
                     <div class="flex flex-col justify-center ml-3">
                         <input type="checkbox" name="light-switch" id="light-switch" class="light-switch sr-only" />
                         <label class="relative cursor-pointer p-2" for="light-switch">
-                            <svg class="dark:hidden" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="dark:hidden" width="16" height="16"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path class="fill-slate-300"
                                     d="M7 0h2v2H7zM12.88 1.637l1.414 1.415-1.415 1.413-1.413-1.414zM14 7h2v2h-2zM12.95 14.433l-1.414-1.413 1.413-1.415 1.415 1.414zM7 14h2v2H7zM2.98 14.364l-1.413-1.415 1.414-1.414 1.414 1.415zM0 7h2v2H0zM3.05 1.706 4.463 3.12 3.05 4.535 1.636 3.12z" />
                                 <path class="fill-slate-400" d="M8 4C5.8 4 4 5.8 4 8s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4Z" />

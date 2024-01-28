@@ -17,8 +17,9 @@
 
                     </div>
 
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    {{-- <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead
+                            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 rk:texdark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
                                     #
@@ -78,10 +79,22 @@
                             @endforeach
 
                         </tbody>
-                    </table>
+                    </table> --}}
+                    <x-bladewind::table :data="$categories->toArray()['data']" :action_icons="$action_icons" :column_aliases="$captions"
+                        exclude_columns="id, updated_at, deleted_at, created_at" striped="true" divider="thin"
+                        has_shadow="true" compact="true" actions_title="{{ __('Actions') }}" />
+
                     <div class="pagination-container py-4">
                         {{ $categories->links() }}
                     </div>
+
+                    <x-bladewind::modal name="delete-category" type="error" title="Confirm Category Deletion"
+                        ok_button_action="executDelete()">
+                        Are you really sure you want to delete <b class="title"></b>?
+                        This action cannot be reversed.
+
+                        <x-text-input id="cat_id" type="hidden" />
+                    </x-bladewind::modal>
                 </div>
 
             </div>
@@ -89,28 +102,29 @@
     </div>
     </div>
 
-    @push('scripts')
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                document.querySelectorAll('.delete__category').forEach(function(form) {
-                    form.addEventListener('submit', function(event) {
-                        event.preventDefault();
+    <script>
+        deleteCategory = (id, title) => {
+            showModal('delete-category')
 
-                        const currentForm = this;
-                        Swal.fire({
-                            title: `Are you sure you want to delete this Catgeory?`,
-                            text: "If you delete this, it will be gone forever.",
-                            icon: "warning",
-                            buttons: true,
-                            dangerMode: true,
-                        }).then((willDelete) => {
-                            if (willDelete) {
-                                currentForm.submit();
-                            }
-                        });
-                    });
-                });
-            });
-        </script>
-    @endpush
+            domEl('#cat_id').value = id;
+            domEl('.bw-delete-category .title').innerText = title;
+        };
+
+        executDelete = () => {
+            const id = document.getElementById('cat_id').value;
+            if (id) {
+                fetch(`/tickets/${id}`, {
+                        method: 'delete',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                    })
+
+                    .then(data => {
+                        window.location.reload();
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+        };
+    </script>
 </x-app-layout>

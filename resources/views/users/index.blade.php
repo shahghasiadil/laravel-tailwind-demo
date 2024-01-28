@@ -39,7 +39,7 @@
 
                     </div>
 
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    {{-- <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
@@ -105,7 +105,7 @@
 
                                         <span>
                                             <form action="{{ route('users.destroy', $user->id) }}" method="POST"
-                                                class="delete__user">
+                                                class="delete">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="action-button" title="Delete">
@@ -126,7 +126,11 @@
                             @endforeach
 
                         </tbody>
-                    </table>
+                    </table> --}}
+
+                    <x-bladewind::table :data="$users->toArray()['data']" :action_icons="$action_icons" :column_aliases="$captions"
+                        exclude_columns="id, updated_at, deleted_at, created_at" striped="true" divider="thin"
+                        has_shadow="true" compact="true" actions_title="{{ __('Actions') }}" />
                     <div class="pagination-container py-4">
                         {{ $users->links() }}
                     </div>

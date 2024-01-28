@@ -31,13 +31,15 @@
 
                 <div class="form-group mb-4">
                     <x-input-label for="priority" :value="__('messages.priority')" />
-                    <select id="priority" name="priority"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
-                        required>
-                        <option @selected($ticket->priority == 'low') value="low">{{ __('messages.low') }}</option>
-                        <option @selected($ticket->priority == 'medium') value="medium">{{ __('messages.medium') }}</option>
-                        <option @selected($ticket->priority == 'high') value="high">{{ __('messages.high') }}</option>
-                    </select>
+
+                    <x-bladewind::select name="priority" placeholder="Select Priority" data="manual" required="true"
+                        selected_value="{{ $ticket->priority }}">
+                        <x-bladewind::select-item label="{{ __('messages.low') }}" value="low" />
+                        <x-bladewind::select-item label="{{ __('messages.medium') }}" value="medium" />
+                        <x-bladewind::select-item label="{{ __('messages.high') }}" value="high" />
+                    </x-bladewind::select>
+
+
                 </div>
 
                 <div class="form-group mb-4">

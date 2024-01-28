@@ -22,13 +22,15 @@
 
                 <div>
                     <x-input-label for="default_contact" :value="__('messages.default_contact')" />
-                    <select name="default_contact" id="default_contact" required
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white ">
-                        <option value="phone">{{ __('messages.phone') }}</option>
-                        <option value="whatsapp">{{ __('messages.whatsapp') }}</option>
-                        <option value="telegram">{{ __('messages.telegram') }}</option>
-                        <option value="email">{{ __('messages.email') }}</option>
-                    </select>
+
+                    <x-bladewind::select name="default_contact" placeholder="Select Contact" data="manual"
+                        required="true">
+                        <x-bladewind::select-item label="{{ __('messages.phone') }}" value="phone" />
+                        <x-bladewind::select-item label="{{ __('messages.whatsapp') }}" value="whatsapp" />
+                        <x-bladewind::select-item label="{{ __('messages.telegram') }}" value="telegram" />
+                        <x-bladewind::select-item label="{{ __('messages.email') }}" value="email" />
+                    </x-bladewind::select>
+                    <x-input-error class="mt-2" :messages="$errors->get('default_contact')" />
                 </div>
 
                 <div>
@@ -59,7 +61,7 @@
                     <x-input-error class="mt-2" :messages="$errors->get('email')" />
                 </div>
 
-                <div>
+                {{-- <div>
 
                     <button id="dropdownSearchButton" data-dropdown-toggle="dropdownSearch"
                         class="inline-flex items-center px-4 w-full h-full justify-center py-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -105,8 +107,19 @@
 
                     </div>
 
+                </div> --}}
+
+                <div>
+                    <x-bladewind::select name="categories" placeholder="category" data="manual" searchable="true"
+                        required="true" multiple="true">
+                        @foreach ($categories as $item)
+                            <x-bladewind::select-item label="{{ $item->title }}" value="{{ $item->id }}" />
+                        @endforeach
+                    </x-bladewind::select>
+
+                    <x-input-error :messages="$errors->get('categories')" />
                 </div>
-                <div class="flex items-center gap-4">
+                <div class="flex items-center gap-4 mt-8">
                     <x-primary-button>{{ __('Save') }}</x-primary-button>
                 </div>
             </form>
