@@ -46,7 +46,6 @@
 
                     <x-text-input id="dob" class="block mt-1 w-full" type="date" name="dob" required
                         autocomplete="dob" />
-
                     <x-input-error :messages="$errors->get('dob')" class="mt-2" />
                 </div>
 
