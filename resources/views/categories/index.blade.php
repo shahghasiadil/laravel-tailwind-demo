@@ -100,6 +100,7 @@
             </div>
         </div>
     </div>
+
     </div>
 
     <script>
@@ -118,12 +119,26 @@
                             'X-CSRF-TOKEN': '{{ csrf_token() }}'
                         },
                     })
+                    .then(response => {
 
-                    .then(data => {
-                        window.location.reload();
+                        const data = response.data;
+
+                        showNotification('Delete Successful', data.success);
+
+                        setTimeout(function() {
+                            window.location.reload();
+                        }, 3000);
+
                     })
-                    .catch(error => console.error('Error:', error));
-            }
-        };
+                    .catch(error => {
+
+                        let errorMessage = error.response && error.response.data && error.response.data.message ?
+                            error.response.data.message :
+                            error.message;
+
+                        showNotification('Delete Failed', errorMessage, 'error');
+                    });
+            };
+        }
     </script>
 </x-app-layout>
