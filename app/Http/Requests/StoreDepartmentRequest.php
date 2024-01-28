@@ -28,7 +28,7 @@ class StoreDepartmentRequest extends FormRequest
             'whatsapp' => 'required|numeric',
             'telegram' => 'required|numeric',
             'email' => 'required|email',
-            'categories' => 'required|array'
+            'categories' => 'required'
         ];
     }
 }
