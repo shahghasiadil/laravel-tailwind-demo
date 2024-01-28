@@ -31,7 +31,10 @@ class DepartmentController extends Controller
 
         $department = Department::create(Arr::except($attributes, 'categories'));
 
-        $department->categories()->attach($attributes['categories']);
+        $categoryIds = array_map('intval', explode(',', $attributes['categories']));
+
+        $department->categories()->attach($categoryIds);
+
 
         return redirect()->route('departments.index')->with('success', 'Department created successfully');
     }
