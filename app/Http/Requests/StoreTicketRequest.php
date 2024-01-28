@@ -28,7 +28,7 @@ class StoreTicketRequest extends FormRequest
             'reported_by_phone' => 'required|numeric',
             'contact_phone' => 'required|numeric',
             'reported_model_type' => 'required|string',
-            'categories' => 'required|array'
+            'categories' => 'required'
         ];
     }
 }
