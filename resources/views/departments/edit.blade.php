@@ -24,13 +24,15 @@
 
                 <div>
                     <x-input-label for="default_contact" :value="__('messages.default_contact')" />
-                    <select name="default_contact" id="default_contact" required
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white ">
-                        <option @selected($department->default_contract == 'phone') value="phone">{{ __('messages.phone') }}</option>
-                        <option @selected($department->default_contract == 'whatsapp') value="whatsapp">{{ __('messages.whatsapp') }}</option>
-                        <option @selected($department->default_contract == 'telegram') value="telegram">{{ __('messages.telegram') }}</option>
-                        <option @selected($department->default_contract == 'email') value="email">{{ __('messages.email') }}</option>
-                    </select>
+
+                    <x-bladewind::select name="default_contact" placeholder="Select Contact" data="manual"
+                        selected_value="{{ $department->default_contact }}" required="true">
+                        <x-bladewind::select-item label="{{ __('messages.phone') }}" value="phone" />
+                        <x-bladewind::select-item label="{{ __('messages.whatsapp') }}" value="whatsapp" />
+                        <x-bladewind::select-item label="{{ __('messages.telegram') }}" value="telegram" />
+                        <x-bladewind::select-item label="{{ __('messages.email') }}" value="email" />
+                    </x-bladewind::select>
+                    <x-input-error class="mt-2" :messages="$errors->get('default_contact')" />
                 </div>
 
                 <div>
