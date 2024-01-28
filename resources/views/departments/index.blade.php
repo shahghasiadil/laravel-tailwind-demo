@@ -96,7 +96,7 @@
                         <x-text-input id="id" type="hidden" />
                     </x-bladewind::modal>
                 </div>
-                <x-bladewind::notification />
+
             </div>
         </div>
     </div>
@@ -117,11 +117,25 @@
                             'X-CSRF-TOKEN': '{{ csrf_token() }}'
                         },
                     })
+                    .then(response => {
 
-                    .then(data => {
-                        window.location.reload();
+                        const data = response.data;
+
+                        showNotification('Delete Successful', data.success);
+
+                        setTimeout(function() {
+                            window.location.reload();
+                        }, 3000);
+
                     })
-                    .catch(error => console.error('Error:', error));
+                    .catch(error => {
+
+                        let errorMessage = error.response && error.response.data && error.response.data.message ?
+                            error.response.data.message :
+                            error.message;
+
+                        showNotification('Delete Failed', errorMessage, 'error');
+                    });
             }
         };
     </script>
