@@ -29,10 +29,7 @@ Route::fallback(function () {
 });
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::redirect('/', '/dashboard', 301);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
